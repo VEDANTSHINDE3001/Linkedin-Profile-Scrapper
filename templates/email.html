@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+
+	<section id="home" style="background-image: url('static/slide-image02.jpg');">
+     	
+	
+
+     <div class="overlay"></div>
+      <div class="container">
+           <div class="row">
+
+                <div class="col-md-12 col-sm-12">
+                     <div class="home-info"><br><br>	<br>	
+
+                     		{% if session['username'] and session['password'] %}
+                      <div class="subscribe-form" align="center"> 
+                        <form action="{{url_for('logout')}}" method="POST">
+                          <div><button class="form-control button4" style=" font-size: 15px; width: 120px; margin-left: : 50px;" >Logout</button></div>
+
+                         </form>
+                         </div><br>	<br>	
+               
+                         <h1 style="font-size: 28px;">Writing mail</h1><br>	<br>	
+
+                         <h1 style="font-size: 28px;">From: {{session['username']}}</h1><br>	<br>	
+
+                         <h1 style="font-size: 28px;">To: {{session['email']}}</h1><br>	<br>	
+
+                       
+                        <div class="subscribe-form">
+
+                            <form action="{{url_for('mail')}}" method="POST">
+                              <textarea style="font-size: 20px;" rows="10" cols="70" name="mail" required="">
+                              </textarea>
+                        <br><br>
+                              
+                              <div align="center"><button class="form-control button4" style="width: 120px; font-size: 15px;" >Send</button></div>
+
+                            </form>
+                            <br>	<br>	<br>	
+                          </div>
+
+
+                          {% else %}
+
+
+                          <div class="subscribe-form" align="center">
+
+                              <form action="{{url_for('index')}}" method="POST">
+                                
+                                
+                                <div align="center"><button class="button5" style="width: 120px;" >Home Page</button></div>
+  
+                              </form>
+                            </div>
+<br><br>
+                              <h1>Session expired, looks like you have logged out. <br> Click the home page button to scrape more profiles.  </h1>
+
+                             
+       
+
+                          {% endif %}
+
+                     </div>
+                </div>
+            </div>
+      </div>
+      </section>
+
+
+
+{% endblock %}

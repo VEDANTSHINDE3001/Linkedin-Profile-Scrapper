@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="static/bootstrap.min.css">
+<link rel="stylesheet" href="static/vegas.min.css">
+<link rel="stylesheet" href="static/font-awesome.min.css">
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="static/templatemo-style.css">
+
+ <!-- PRE LOADER -->
+ <section class="preloader">
+     <div class="spinner">
+
+          <span class="spinner-rotate"></span>
+          
+     </div>
+</section>
+
+<script type="text/javascript">// <![CDATA[
+     function loading(){
+         $("#loading").show();
+         $("#content").hide();       
+     }
+// ]]></script>
+
+{% if session['username'] and session['password'] %}
+                      <div class="subscribe-form" style="left: 1300px; top: 27px;"> 
+                        <form action="{{url_for('logout')}}" method="POST">
+                          <div><button class="form-control button4" style="width: 120px; margin-left: : 50px;" >Logout</button></div>
+
+                         </form>
+                         </div>
+
+
+{% if session['message'] %}
+          <div align="center">
+          <h1 style="color: red;">{{session['message']}}</h1>
+          </div>
+{% endif %}
+
+
+
+<div id="loading"></div>
+<div id="content">
+<section id="home" style="background-image: url('static/slide-image02.jpg');">
+     <div class="overlay"></div>
+      <div class="container">
+           <div class="row">
+
+                <div class="col-md-12 col-sm-12">
+                     <div class="home-info">
+
+                        
+                         <h1 style="font-size: 28px;">Hey {{session['logged_in_username'].split()[0]}}</h1>
+
+                         <h1 style="font-size: 28px;">Remember, you can scrape the profile info of only the users <br>you are connected on LinkedIn!</h1>
+                        <br><br>
+
+                        <div class="subscribe-form">
+
+                            <form action="{{url_for('search_profile')}}" method="POST">
+                              <input name="url" class="form-control" placeholder="Enter the profile URL" required="">
+                        <br>
+                              
+                              <div align="center"><button class="form-control button4" onclick="loading();" style="width: 120px;" >Submit</button></div>
+
+                            </form>
+                          </div>
+                          {% else %}
+
+
+                          <div class="subscribe-form" align="center">
+
+                              <form action="{{url_for('index')}}" method="POST">
+                                
+                                
+                                <div align="center"><button class="button5" style="width: 120px;" >Home Page</button></div>
+  
+                              </form>
+                            </div>
+<br><br>
+                              <h1>Session expired, looks like you have logged out. <br> Click the home page button to scrape more profiles.  </h1>
+
+                             
+       
+
+                          {% endif %}
+
+
+
+                     </div>
+                </div>
+            </div>
+      </div>
+      </section>
+     </div>
+
+{% endblock %}

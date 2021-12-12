@@ -1,0 +1,59 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="static/bootstrap.min.css">
+<link rel="stylesheet" href="static/vegas.min.css">
+<link rel="stylesheet" href="static/font-awesome.min.css">
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="static/templatemo-style.css">
+
+
+{% if message %}
+     <div align="center">
+          <h1>{{message}}</h1>
+     </div>    
+{% endif %}
+
+<!-- HOME -->
+<section id="home" style="background-image: url('static/slide-image02.jpg');">
+   <div class="overlay"></div>
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-12 col-sm-12">
+                    <div class="home-info">
+                        <!--<h1>Hey there!</h1>
+                        <h1>Log into your LinkedIn account to test this application</h1>
+                         <h1>Remember, you can scrape the profile info of only the users <br>you are connected on LinkedIn!</h1>
+                         <br><br>-->
+                         <h1 style="font-size: 28px;">To get started <br>   Log into your LinkedIn Account</h1>
+                         <br><br>
+                         <!--{% if message %}
+                              <p style="color: red;">{{message}}</p>
+                              <br><br>
+                         {% endif %}-->
+                         <div class="subscribe-form">
+                           <form action="{{url_for('index')}}" method="POST">
+                             <input type="email" name="email" class="form-control" placeholder="Enter your email" required="">
+                       <br>
+
+                             <input type="password" name="password" class="form-control" placeholder="Enter your password" required="">
+                             <br>
+                             
+                             <div align="center"><button class="form-control button4" style="width: 120px;" >Submit</button></div>
+
+                           </form>
+                         </div>
+                          
+                    </div>
+               </div>
+
+          </div>
+     </div>
+     
+</section>
+
+
+{% endblock %}
